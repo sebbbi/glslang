@@ -395,6 +395,7 @@ GLSLANG_EXPORT const char* glslang_shader_get_preprocessed_code(glslang_shader_t
 GLSLANG_EXPORT int glslang_shader_preprocess(glslang_shader_t* shader, const glslang_input_t* input)
 {
     DirStackFileIncluder Includer;
+    if (input->include_path) Includer.pushExternalLocalDirectory(input->include_path);
     /* TODO: use custom callbacks if they are available in 'i->callbacks' */
     return shader->shader->preprocess(
         reinterpret_cast<const TBuiltInResource*>(input->resource),

@@ -183,6 +183,7 @@ typedef struct glslang_input_s {
     int forward_compatible;
     glslang_messages_t messages;
     const glslang_resource_t* resource;
+    const char* include_path;
 } glslang_input_t;
 
 /* Inclusion result structure allocated by C include_local/include_system callbacks */
