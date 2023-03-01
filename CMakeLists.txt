@@ -41,6 +41,10 @@ if(POLICY CMP0054)
   cmake_policy(SET CMP0054 NEW)
 endif()
 
+if(APPLE)
+    set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "Minimum OS X deployment version" FORCE)
+endif()
+
 project(glslang)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
@@ -107,6 +111,7 @@ CMAKE_DEPENDENT_OPTION(ENABLE_HLSL
 option(ENABLE_RTTI "Enables RTTI" OFF)
 option(ENABLE_EXCEPTIONS "Enables Exceptions" OFF)
 option(ENABLE_OPT "Enables spirv-opt capability if present" ON)
+
 
 if(MINGW OR (CMAKE_SYSTEM_NAME STREQUAL "Darwin" AND ${CMAKE_CXX_COMPILER_ID} MATCHES "GNU"))
     # Workaround for CMake behavior on Mac OS with gcc, cmake generates -Xarch_* arguments
